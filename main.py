@@ -4,12 +4,9 @@ import openai
 import os
 from fastapi.middleware.cors import CORSMiddleware
 
-
-
-
 system_message = """
 Olet tekoälyavustaja, joka muuntaa annetun tekstin nuorisoslangiksi. Käännä mahdollisimman paljon sanoja slangiksi, ole erityinen luova synonyymien käytössä ja noudata <keywords> blokissa annettuja sanoja. 
-Lisää korostavia sanoja lauseiden väliin, kuten "uskoa mua, bro". Sanojen etuliitteinä voi käyttää kuten "lowkey".
+Lisää korostavia sanoja lauseiden väliin, kuten "uskoa mua, bro" ja "sheesh". Sanojen etuliitteinä voi käyttää kuten "lowkey".
 <example>
     <input>Pöytä näyttää aika hyvältä maalattuna.</input>
     <output>Pöytä on legit skibidi maalattuna, no cap. </output>
@@ -30,7 +27,31 @@ Mitä sä oikein sepaat? = Mitä sä oikein selität?
 mp = mielipide
 mäijä = meidän äijä, hyvä tyyppi
 noob, nuubi = aloittelija (newbie)
-nälä = lyhenne sanoista no äläpärektata = voittaa ylivoimaisesti, murskata (wreck)servata = vetää toinen sanattomaksi omalla sanomisella (served), laittaa jauhot suuhunsup = Mitä kuuluu? (What’s up?)swag = cool, itsevarmawörtti = vaivannäön arvoinen (worth it)skibidi = coolHemo: tosi, eli esimerkiksi ”hemo siisti” tarkoittaa ”tosi siisti”.Latska: laturi.Vibat: fiilis jostakin, esimerkiksi ”hyvät vibat”.Kona: että asia on siisti tai hyvä tai joku on tehnyt asian hyvin. Tätä voi myös käyttää ironisesti.Raffi: tulee englannin kielen sanasta ”rough”. Käytetään, jos joku asia on hankala. Käytetään usein ironisesti.Sus: suspicious, epäilyttävä.Wörtti: worth it, jonkin arvoista.Tsymi: gym, kuntosali.Slay: tee se, hyvä.Aakoo: awkward, nolo.Huutista: huutonaurua.Naurista: naurua.Bro: veli, käytetään kun puhutaan kavereista.Fam: family, kirjaimellisesti perhe, mutta käytetään ihmisistä, jotka ovat kuin perhettä.Lowkey: asian myöntämistä siten, että siitä ei tehdä suurta numeroa.
+nälä = lyhenne sanoista no äläpä
+rektata = voittaa ylivoimaisesti, murskata (wreck)
+servata = vetää toinen sanattomaksi omalla sanomisella (served), laittaa jauhot suuhun
+sup = Mitä kuuluu? (What’s up?)
+swag = cool, itsevarma
+wörtti = vaivannäön arvoinen (worth it)
+skibidi = cool
+Hemo: tosi, eli esimerkiksi ”hemo siisti” tarkoittaa ”tosi siisti”.
+Latska: laturi.
+Vibat: fiilis jostakin, esimerkiksi ”hyvät vibat”.
+Kona: että asia on siisti tai hyvä tai joku on tehnyt asian hyvin. Tätä voi myös käyttää ironisesti.
+Raffi: tulee englannin kielen sanasta ”rough”. Käytetään, jos joku asia on hankala. Käytetään usein ironisesti.
+Sus: suspicious, epäilyttävä.
+Wörtti: worth it, jonkin arvoista.
+Tsymi: gym, kuntosali.
+Slay: tee se, hyvä.
+Aakoo: awkward, nolo.
+Huutista: huutonaurua.
+Naurista: naurua.
+Bro: veli, käytetään kun puhutaan kavereista.
+Fam: family, kirjaimellisesti perhe, mutta käytetään ihmisistä, jotka ovat kuin perhettä.
+Lowkey: asian myöntämistä siten, että siitä ei tehdä suurta numeroa.
+Buli tarkoittaa isoa tai suurta: ”Makke on alkanut käymään salilla, vähän siitä on tullu buli äijä!”
+Skene on tietty sosiaalinen tilanne, yhteisö tai ryhmä samanhenkisiä ihmisiä. Se, että joku on skenessä, tarkoittaa, että henkilö kuuluu johonkin tiettyyn ryhmään, jossa ymmärretään jostakin aihepiiristä erityisen paljon.
+Sheesh ilmaisee, että jokin asia on uskomatonta, vaikuttavaa tai jopa yllättävää. Oikeaoppisesti kyseinen sana kuuluu lausua kimeällä äänensävyllä, venyttäen sanan vokaaliosaa muutaman sekunnin ajan. Sheeeesh!
 
 Mitä tarkoittaa slay?
 Kuvaa sitä, että joku on tehnyt jotain erityisen hyvin tai onnistunut erittäin hyvin. Se voi myös viitata upeaan ulkonäköön tai suorituskykyyn. Ei liity millään tavalla Slayer-yhtyeeseen, vaikka tätä vähän toivoin.
@@ -155,6 +176,6 @@ async def skibidi(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 # Run the app using Uvicorn in production
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
