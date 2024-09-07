@@ -1,1 +1,3 @@
 # Skibidi
+
+Skibidify your life
