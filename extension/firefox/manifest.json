@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Skibidi Text Replacer",
+  "version": "1.0",
+  "description": "Selects text and replaces it with content from an API when right-clicking and selecting 'Skibidi'.",
+  "permissions": ["contextMenus", "activeTab", "scripting", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "host_permissions": ["*://*/*", "https://skibidi-6n9v.onrender.com/skibidi"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@example.com"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://skibidi-6n9v.onrender.com/skibidi"
+  }
+}
